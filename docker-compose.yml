@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3001:3001"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    environment:
+      - FLASK_APP=src/app.py
+      - FLASK_ENV=development
+      - PYTHONUNBUFFERED=1
+      - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN}
+    restart: unless-stopped 

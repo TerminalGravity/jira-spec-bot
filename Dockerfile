@@ -1,24 +1,39 @@
-# Use an official Python runtime as a parent image
-FROM python:3.9-slim
+# Use Python 3.11 slim image
+FROM python:3.11-slim
 
-# Set the working directory in the container
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    openssl \
+    procps \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install ngrok
+RUN curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && \
+    echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | tee /etc/apt/sources.list.d/ngrok.list && \
+    apt-get update && apt-get install -y ngrok
+
+# Set working directory
 WORKDIR /app
 
-# Copy the requirements file into the container
+# Copy requirements first to leverage Docker cache
 COPY requirements.txt .
 
-# Install any needed packages specified in requirements.txt
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code
-COPY src/ ./src/
+# Copy the rest of the application
+COPY . .
 
-# Make port 3000 available to the world outside this container
-EXPOSE 3000
+# Make start.sh executable
+RUN chmod +x /app/start.sh
+
+# Expose port
+EXPOSE 3001
 
 # Set environment variables
 ENV FLASK_APP=src/app.py
-ENV PYTHONUNBUFFERED=1
+ENV FLASK_ENV=development
 
-# Run the application with gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:3000", "src.app:app"] 
+# Start the application
+CMD ["/app/start.sh"] 

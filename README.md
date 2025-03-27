@@ -9,6 +9,7 @@ A Slack bot that generates detailed specifications for Jira tickets using Gemini
 - Adds specifications as comments to Jira tickets
 - Supports custom prompts for specification generation
 - Containerized for easy deployment
+- Supports multiple Gemini models (1.5 Pro, 1.5 Flash, 2.0 Flash)
 
 ## Prerequisites
 
@@ -76,9 +77,19 @@ A Slack bot that generates detailed specifications for Jira tickets using Gemini
    docker build -t jira-spec-bot .
    ```
 
-2. Run the container:
+2. Run the container with ngrok:
    ```bash
    docker run -p 3000:3000 --env-file .env jira-spec-bot
+   ```
+
+3. The container will start both the Flask application and ngrok. The ngrok URL will be displayed in the container logs.
+
+4. Update your Slack app's slash command URL with the ngrok URL + `/slack/command`
+
+5. Test the commands:
+   ```bash
+   # Test /ask command with different models
+   TIMESTAMP=$(date +%s) && SIGNING_SECRET="your_signing_secret" && BODY="command=/ask&text=gemini-1.5-flash hello&channel_id=test_channel" && SIG_BASESTRING="v0:${TIMESTAMP}:${BODY}" && SIGNATURE=$(echo -n "$SIG_BASESTRING" | openssl sha256 -hmac "$SIGNING_SECRET" | cut -d' ' -f2) && curl -X POST https://your-ngrok-url/slack/command -H "Content-Type: application/x-www-form-urlencoded" -H "X-Slack-Request-Timestamp: ${TIMESTAMP}" -H "X-Slack-Signature: v0=${SIGNATURE}" -d "${BODY}"
    ```
 
 ## Usage
@@ -88,11 +99,25 @@ A Slack bot that generates detailed specifications for Jira tickets using Gemini
    /create-specs PROJ-123 Generate a detailed spec for implementing user authentication
    ```
 
-2. The bot will:
-   - Fetch the ticket details from Jira
-   - Generate specifications using Gemini Pro
-   - Add the specifications as a comment to the Jira ticket
-   - Provide feedback in the Slack channel
+2. Use the `/ask` command to interact with different Gemini models:
+   ```
+   # Using default model (gemini-1.5-pro)
+   /ask What is the weather like?
+
+   # Using specific models
+   /ask gemini-1.5-flash What is the weather like?
+   /ask gemini-2.0-flash What is the weather like?
+   ```
+
+   Available models:
+   - `gemini-1.5-pro` (default) - Best for general text generation and reasoning
+   - `gemini-1.5-flash` - Faster responses, good for simple queries
+   - `gemini-2.0-flash` - Latest model with improved capabilities
+
+3. The bot will:
+   - For `/create-specs`: Generate specifications and add them to the Jira ticket
+   - For `/ask`: Provide a detailed response using the specified model
+   - Show feedback in the Slack channel
 
 ## Specification Format
 
