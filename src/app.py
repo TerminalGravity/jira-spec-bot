@@ -336,7 +336,6 @@ def process_ask_command_async(text, channel_id, response_url):
         logger.debug(f"Question: {question}")
 
         # Initialize the response message
-        message_ts = None
         accumulated_text = ""
         
         # Send initial message with question
@@ -345,61 +344,54 @@ def process_ask_command_async(text, channel_id, response_url):
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": f"*Model:* {model_name}\n*Question/Task:*\n{question}"
-                }
-            },
-            {
-                "type": "section",
-                "text": {
-                    "type": "mrkdwn",
-                    "text": "*Response:*\nThinking..."
+                    "text": f"*Model:* {model_name}\n*Question/Task:*\n{question}\n\n*Response:*\nGenerating response..."
                 }
             }
         ]
         
-        response = send_delayed_response(response_url, {
+        # Send initial message
+        initial_response = send_delayed_response(response_url, {
             "response_type": "in_channel",
             "blocks": initial_blocks
         })
         
-        if response and response.ok:
-            message_ts = response.json().get('ts')
+        if not initial_response:
+            logger.error("Failed to send initial message")
+            return
         
-        # Generate streaming response
-        logger.info("Generating streaming response using Gemini")
+        # Generate response
+        logger.info("Generating response using Gemini")
         generation_start = time.time()
         try:
+            # Collect all chunks into final response
             for chunk in generate_response(question, "", model_name):
                 accumulated_text += chunk
-                
-                # Update the message with accumulated text
-                if message_ts:
-                    update_blocks = [
-                        {
-                            "type": "section",
-                            "text": {
-                                "type": "mrkdwn",
-                                "text": f"*Model:* {model_name}\n*Question/Task:*\n{question}"
-                            }
-                        },
-                        {
-                            "type": "section",
-                            "text": {
-                                "type": "mrkdwn",
-                                "text": "*Response:*\n" + accumulated_text
-                            }
-                        }
-                    ]
-                    
-                    send_delayed_response(response_url, {
-                        "response_type": "in_channel",
-                        "blocks": update_blocks,
-                        "replace_original": True
-                    })
-                    
-                    # Add a small delay to avoid rate limits
-                    time.sleep(0.5)
-                    
+            
+            # Send final response
+            final_blocks = [
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": f"*Model:* {model_name}\n*Question/Task:*\n{question}\n\n*Response:*\n{accumulated_text}"
+                    }
+                }
+            ]
+            
+            # Try to update the original message
+            final_response = send_delayed_response(response_url, {
+                "response_type": "in_channel",
+                "blocks": final_blocks,
+                "replace_original": True
+            })
+            
+            # If update fails, send as new message
+            if not final_response or not final_response.ok:
+                send_delayed_response(response_url, {
+                    "response_type": "in_channel",
+                    "blocks": final_blocks
+                })
+            
             logger.debug(f"Response generation time: {time.time() - generation_start:.2f} seconds")
             
         except Exception as e:

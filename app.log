@@ -229,3 +229,370 @@ with app.app_context(). See the documentation for more information.
  * Running on http://127.0.0.1:3001
  * Running on http://172.21.0.2:3001
 2025-03-27 00:32:44,974 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-27 00:33:18,638 - app - INFO - Received Slack command request
+2025-03-27 00:33:18,639 - app - DEBUG - Request headers: {'Host': '5ced-24-121-38-93.ngrok-free.app', 'User-Agent': 'Slackbot 1.0 (+https://api.slack.com/robots)', 'Content-Length': '441', 'Accept': 'application/json,*/*', 'Accept-Encoding': 'gzip,deflate', 'Content-Type': 'application/x-www-form-urlencoded', 'X-Forwarded-For': '13.218.168.115', 'X-Forwarded-Host': '5ced-24-121-38-93.ngrok-free.app', 'X-Forwarded-Proto': 'https', 'X-Slack-Request-Timestamp': '1743035598', 'X-Slack-Signature': 'v0=ea7cc4ed964bc1531b36b2176b1ea9eadeeb8240e190f6ee353d21e0ff8e45ee'}
+2025-03-27 00:33:18,640 - app - DEBUG - Raw request body: token=1w1FtPyZCgUJHWFW1eTNHYFu&team_id=T2NLV2E94&team_domain=alldigitalrewards&channel_id=C08K2DPSN07&channel_name=ai-bot&user_id=U0576UZDLSX&user_name=jfelke&command=%2Fask&text=what+does+All+Digital+Rewards+do&api_app_id=A08L4GHT0M6&is_enterprise_install=false&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FT2NLV2E94%2F8649400883207%2F7n8iRt18ZLMdYKOEtyiV0fYz&trigger_id=8649400883399.90709082310.6c323351495af7c0d492f855a77bd263
+2025-03-27 00:33:18,641 - app - DEBUG - Verifying request signature:
+2025-03-27 00:33:18,641 - app - DEBUG - Timestamp: 1743035598
+2025-03-27 00:33:18,641 - app - DEBUG - Signature: v0=ea7cc4ed964bc1531b36b2176b1ea9eadeeb8240e190f6ee353d21e0ff8e45ee
+2025-03-27 00:33:18,642 - app - DEBUG - Signing secret: 628e...8c85
+2025-03-27 00:33:18,643 - app - DEBUG - Base string: v0:1743035598:token=1w1FtPyZCgUJHWFW1eTNHYFu&team_id=T2NLV2E94&team_domain=alldigitalrewards&channel_id=C08K2DPSN07&channel_name=ai-bot&user_id=U0576UZDLSX&user_name=jfelke&command=%2Fask&text=what+does+All+Digital+Rewards+do&api_app_id=A08L4GHT0M6&is_enterprise_install=false&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FT2NLV2E94%2F8649400883207%2F7n8iRt18ZLMdYKOEtyiV0fYz&trigger_id=8649400883399.90709082310.6c323351495af7c0d492f855a77bd263
+2025-03-27 00:33:18,643 - app - DEBUG - Expected signature: v0=ea7cc4ed964bc1531b36b2176b1ea9eadeeb8240e190f6ee353d21e0ff8e45ee
+2025-03-27 00:33:18,643 - app - DEBUG - Received signature: v0=ea7cc4ed964bc1531b36b2176b1ea9eadeeb8240e190f6ee353d21e0ff8e45ee
+2025-03-27 00:33:18,645 - app - DEBUG - Form data: {'token': '1w1FtPyZCgUJHWFW1eTNHYFu', 'team_id': 'T2NLV2E94', 'team_domain': 'alldigitalrewards', 'channel_id': 'C08K2DPSN07', 'channel_name': 'ai-bot', 'user_id': 'U0576UZDLSX', 'user_name': 'jfelke', 'command': '/ask', 'text': 'what does All Digital Rewards do', 'api_app_id': 'A08L4GHT0M6', 'is_enterprise_install': 'false', 'response_url': 'https://hooks.slack.com/commands/T2NLV2E94/8649400883207/7n8iRt18ZLMdYKOEtyiV0fYz', 'trigger_id': '8649400883399.90709082310.6c323351495af7c0d492f855a77bd263'}
+2025-03-27 00:33:18,646 - app - INFO - Processing command: /ask with text: what does All Digital Rewards do
+2025-03-27 00:33:18,646 - app - INFO - Processing /ask command asynchronously
+2025-03-27 00:33:18,647 - app - INFO - Request processing time: 0.01 seconds
+2025-03-27 00:33:18,647 - app - DEBUG - Text: what does All Digital Rewards do, Channel ID: C08K2DPSN07
+2025-03-27 00:33:18,648 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 00:33:18] "POST /slack/command HTTP/1.1" 200 -
+2025-03-27 00:33:18,649 - app - DEBUG - Selected model: gemini-1.5-pro
+2025-03-27 00:33:18,649 - app - DEBUG - Question: what does All Digital Rewards do
+2025-03-27 00:33:18,650 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:33:18,674 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:33:19,081 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8649400883207/7n8iRt18ZLMdYKOEtyiV0fYz HTTP/1.1" 200 2
+2025-03-27 00:33:19,082 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:33:19,084 - app - ERROR - Error in process_ask_command_async
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/requests/models.py", line 974, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/src/app.py", line 366, in process_ask_command_async
+    message_ts = response.json().get('ts')
+                 ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/requests/models.py", line 978, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-03-27 00:33:19,088 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:33:19,090 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:33:19,423 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8649400883207/7n8iRt18ZLMdYKOEtyiV0fYz HTTP/1.1" 200 2
+2025-03-27 00:33:19,425 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:34:58,556 - app - INFO - Received Slack command request
+2025-03-27 00:34:58,559 - app - DEBUG - Request headers: {'Host': '5ced-24-121-38-93.ngrok-free.app', 'User-Agent': 'Slackbot 1.0 (+https://api.slack.com/robots)', 'Content-Length': '411', 'Accept': 'application/json,*/*', 'Accept-Encoding': 'gzip,deflate', 'Content-Type': 'application/x-www-form-urlencoded', 'X-Forwarded-For': '52.54.88.253', 'X-Forwarded-Host': '5ced-24-121-38-93.ngrok-free.app', 'X-Forwarded-Proto': 'https', 'X-Slack-Request-Timestamp': '1743035698', 'X-Slack-Signature': 'v0=d76a247421647d6f643062540ff6fe4e2d4b7ed541d0f6d4f9b28ae0d0ff47a6'}
+2025-03-27 00:34:58,559 - app - DEBUG - Raw request body: token=1w1FtPyZCgUJHWFW1eTNHYFu&team_id=T2NLV2E94&team_domain=alldigitalrewards&channel_id=C08K2DPSN07&channel_name=ai-bot&user_id=U0576UZDLSX&user_name=jfelke&command=%2Fask&text=hi&api_app_id=A08L4GHT0M6&is_enterprise_install=false&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FT2NLV2E94%2F8674653782257%2FGeYFVGViK3ULCHGnor5W050f&trigger_id=8674653782369.90709082310.d8b9457032b84def4a7165f4b43a892a
+2025-03-27 00:34:58,560 - app - DEBUG - Verifying request signature:
+2025-03-27 00:34:58,560 - app - DEBUG - Timestamp: 1743035698
+2025-03-27 00:34:58,560 - app - DEBUG - Signature: v0=d76a247421647d6f643062540ff6fe4e2d4b7ed541d0f6d4f9b28ae0d0ff47a6
+2025-03-27 00:34:58,561 - app - DEBUG - Signing secret: 628e...8c85
+2025-03-27 00:34:58,562 - app - DEBUG - Base string: v0:1743035698:token=1w1FtPyZCgUJHWFW1eTNHYFu&team_id=T2NLV2E94&team_domain=alldigitalrewards&channel_id=C08K2DPSN07&channel_name=ai-bot&user_id=U0576UZDLSX&user_name=jfelke&command=%2Fask&text=hi&api_app_id=A08L4GHT0M6&is_enterprise_install=false&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FT2NLV2E94%2F8674653782257%2FGeYFVGViK3ULCHGnor5W050f&trigger_id=8674653782369.90709082310.d8b9457032b84def4a7165f4b43a892a
+2025-03-27 00:34:58,562 - app - DEBUG - Expected signature: v0=d76a247421647d6f643062540ff6fe4e2d4b7ed541d0f6d4f9b28ae0d0ff47a6
+2025-03-27 00:34:58,562 - app - DEBUG - Received signature: v0=d76a247421647d6f643062540ff6fe4e2d4b7ed541d0f6d4f9b28ae0d0ff47a6
+2025-03-27 00:34:58,563 - app - DEBUG - Form data: {'token': '1w1FtPyZCgUJHWFW1eTNHYFu', 'team_id': 'T2NLV2E94', 'team_domain': 'alldigitalrewards', 'channel_id': 'C08K2DPSN07', 'channel_name': 'ai-bot', 'user_id': 'U0576UZDLSX', 'user_name': 'jfelke', 'command': '/ask', 'text': 'hi', 'api_app_id': 'A08L4GHT0M6', 'is_enterprise_install': 'false', 'response_url': 'https://hooks.slack.com/commands/T2NLV2E94/8674653782257/GeYFVGViK3ULCHGnor5W050f', 'trigger_id': '8674653782369.90709082310.d8b9457032b84def4a7165f4b43a892a'}
+2025-03-27 00:34:58,563 - app - INFO - Processing command: /ask with text: hi
+2025-03-27 00:34:58,564 - app - INFO - Processing /ask command asynchronously
+2025-03-27 00:34:58,564 - app - INFO - Request processing time: 0.01 seconds
+2025-03-27 00:34:58,565 - app - DEBUG - Text: hi, Channel ID: C08K2DPSN07
+2025-03-27 00:34:58,566 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 00:34:58] "POST /slack/command HTTP/1.1" 200 -
+2025-03-27 00:34:58,566 - app - DEBUG - Selected model: gemini-1.5-pro
+2025-03-27 00:34:58,567 - app - DEBUG - Question: hi
+2025-03-27 00:34:58,567 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:34:58,570 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:34:58,927 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8674653782257/GeYFVGViK3ULCHGnor5W050f HTTP/1.1" 200 2
+2025-03-27 00:34:58,928 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:34:58,929 - app - ERROR - Error in process_ask_command_async
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/requests/models.py", line 974, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/src/app.py", line 366, in process_ask_command_async
+    logger.info("Generating streaming response using Gemini")
+                     ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/requests/models.py", line 978, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-03-27 00:34:58,933 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:34:58,936 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:34:59,210 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8674653782257/GeYFVGViK3ULCHGnor5W050f HTTP/1.1" 200 2
+2025-03-27 00:34:59,212 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:35:41,312 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3001
+ * Running on http://172.21.0.2:3001
+2025-03-27 00:35:41,312 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-27 00:37:06,455 - app - INFO - Received Slack command request
+2025-03-27 00:37:06,456 - app - DEBUG - Request headers: {'Host': 'c792-24-121-38-93.ngrok-free.app', 'User-Agent': 'Slackbot 1.0 (+https://api.slack.com/robots)', 'Content-Length': '411', 'Accept': 'application/json,*/*', 'Accept-Encoding': 'gzip,deflate', 'Content-Type': 'application/x-www-form-urlencoded', 'X-Forwarded-For': '3.88.19.191', 'X-Forwarded-Host': 'c792-24-121-38-93.ngrok-free.app', 'X-Forwarded-Proto': 'https', 'X-Slack-Request-Timestamp': '1743035826', 'X-Slack-Signature': 'v0=5ab7b10c14eb06b641e41f96ea785a60a6f57613f40911f023ae7ea9b8271d69'}
+2025-03-27 00:37:06,457 - app - DEBUG - Raw request body: token=1w1FtPyZCgUJHWFW1eTNHYFu&team_id=T2NLV2E94&team_domain=alldigitalrewards&channel_id=C08K2DPSN07&channel_name=ai-bot&user_id=U0576UZDLSX&user_name=jfelke&command=%2Fask&text=hi&api_app_id=A08L4GHT0M6&is_enterprise_install=false&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FT2NLV2E94%2F8667071007940%2FEGhuxFEXkmj5fskWRiifpCBv&trigger_id=8667071007956.90709082310.8dd32aee76ac05a8ea1f6cc94d92b8c7
+2025-03-27 00:37:06,458 - app - DEBUG - Verifying request signature:
+2025-03-27 00:37:06,458 - app - DEBUG - Timestamp: 1743035826
+2025-03-27 00:37:06,458 - app - DEBUG - Signature: v0=5ab7b10c14eb06b641e41f96ea785a60a6f57613f40911f023ae7ea9b8271d69
+2025-03-27 00:37:06,459 - app - DEBUG - Signing secret: 628e...8c85
+2025-03-27 00:37:06,460 - app - DEBUG - Base string: v0:1743035826:token=1w1FtPyZCgUJHWFW1eTNHYFu&team_id=T2NLV2E94&team_domain=alldigitalrewards&channel_id=C08K2DPSN07&channel_name=ai-bot&user_id=U0576UZDLSX&user_name=jfelke&command=%2Fask&text=hi&api_app_id=A08L4GHT0M6&is_enterprise_install=false&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FT2NLV2E94%2F8667071007940%2FEGhuxFEXkmj5fskWRiifpCBv&trigger_id=8667071007956.90709082310.8dd32aee76ac05a8ea1f6cc94d92b8c7
+2025-03-27 00:37:06,460 - app - DEBUG - Expected signature: v0=5ab7b10c14eb06b641e41f96ea785a60a6f57613f40911f023ae7ea9b8271d69
+2025-03-27 00:37:06,460 - app - DEBUG - Received signature: v0=5ab7b10c14eb06b641e41f96ea785a60a6f57613f40911f023ae7ea9b8271d69
+2025-03-27 00:37:06,462 - app - DEBUG - Form data: {'token': '1w1FtPyZCgUJHWFW1eTNHYFu', 'team_id': 'T2NLV2E94', 'team_domain': 'alldigitalrewards', 'channel_id': 'C08K2DPSN07', 'channel_name': 'ai-bot', 'user_id': 'U0576UZDLSX', 'user_name': 'jfelke', 'command': '/ask', 'text': 'hi', 'api_app_id': 'A08L4GHT0M6', 'is_enterprise_install': 'false', 'response_url': 'https://hooks.slack.com/commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv', 'trigger_id': '8667071007956.90709082310.8dd32aee76ac05a8ea1f6cc94d92b8c7'}
+2025-03-27 00:37:06,463 - app - INFO - Processing command: /ask with text: hi
+2025-03-27 00:37:06,463 - app - INFO - Processing /ask command asynchronously
+2025-03-27 00:37:06,464 - app - INFO - Request processing time: 0.01 seconds
+2025-03-27 00:37:06,464 - app - DEBUG - Text: hi, Channel ID: C08K2DPSN07
+2025-03-27 00:37:06,466 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 00:37:06] "POST /slack/command HTTP/1.1" 200 -
+2025-03-27 00:37:06,466 - app - DEBUG - Selected model: gemini-1.5-pro
+2025-03-27 00:37:06,467 - app - DEBUG - Question: hi
+2025-03-27 00:37:06,467 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:37:06,480 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:37:06,844 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv HTTP/1.1" 200 2
+2025-03-27 00:37:06,846 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:37:06,847 - app - INFO - Generating streaming response using Gemini
+2025-03-27 00:37:06,847 - app - INFO - Generating response with model: gemini-1.5-pro
+2025-03-27 00:37:06,848 - app - DEBUG - Prompt: hi
+2025-03-27 00:37:06,849 - app - DEBUG - Context length: 0
+2025-03-27 00:37:08,050 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:37:08,052 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:37:08,362 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv HTTP/1.1" 200 2
+2025-03-27 00:37:08,363 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:37:08,870 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:37:08,872 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:37:09,165 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv HTTP/1.1" 200 2
+2025-03-27 00:37:09,166 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:37:09,672 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:37:09,674 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:37:09,991 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv HTTP/1.1" 200 2
+2025-03-27 00:37:09,992 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:37:10,499 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:37:10,502 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:37:10,812 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv HTTP/1.1" 200 2
+2025-03-27 00:37:10,813 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:37:11,317 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:37:11,320 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:37:11,578 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv HTTP/1.1" 404 8
+2025-03-27 00:37:11,579 - app - ERROR - Error sending delayed response: 404 Client Error: Not Found for url: https://hooks.slack.com/commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv
+2025-03-27 00:37:12,089 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:37:12,092 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:37:12,367 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv HTTP/1.1" 404 8
+2025-03-27 00:37:12,368 - app - ERROR - Error sending delayed response: 404 Client Error: Not Found for url: https://hooks.slack.com/commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv
+2025-03-27 00:37:12,877 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:37:12,881 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:37:13,136 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv HTTP/1.1" 404 8
+2025-03-27 00:37:13,137 - app - ERROR - Error sending delayed response: 404 Client Error: Not Found for url: https://hooks.slack.com/commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv
+2025-03-27 00:37:13,830 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:37:13,832 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:37:14,094 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv HTTP/1.1" 404 8
+2025-03-27 00:37:14,095 - app - ERROR - Error sending delayed response: 404 Client Error: Not Found for url: https://hooks.slack.com/commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv
+2025-03-27 00:37:14,889 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:37:14,892 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:37:15,155 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv HTTP/1.1" 404 8
+2025-03-27 00:37:15,156 - app - ERROR - Error sending delayed response: 404 Client Error: Not Found for url: https://hooks.slack.com/commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv
+2025-03-27 00:37:16,037 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:37:16,040 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:37:16,297 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv HTTP/1.1" 404 8
+2025-03-27 00:37:16,299 - app - ERROR - Error sending delayed response: 404 Client Error: Not Found for url: https://hooks.slack.com/commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv
+2025-03-27 00:37:16,808 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:37:16,811 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:37:17,065 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv HTTP/1.1" 404 8
+2025-03-27 00:37:17,066 - app - ERROR - Error sending delayed response: 404 Client Error: Not Found for url: https://hooks.slack.com/commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv
+2025-03-27 00:37:17,572 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:37:17,573 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:37:17,824 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv HTTP/1.1" 404 8
+2025-03-27 00:37:17,825 - app - ERROR - Error sending delayed response: 404 Client Error: Not Found for url: https://hooks.slack.com/commands/T2NLV2E94/8667071007940/EGhuxFEXkmj5fskWRiifpCBv
+2025-03-27 00:37:18,327 - app - INFO - Response generated in 11.48 seconds
+2025-03-27 00:37:18,328 - app - DEBUG - Response generation time: 11.48 seconds
+2025-03-27 00:38:57,072 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3001
+ * Running on http://172.21.0.2:3001
+2025-03-27 00:38:57,072 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-27 00:40:10,549 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3001
+ * Running on http://172.21.0.2:3001
+2025-03-27 00:40:10,549 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-27 00:40:34,454 - app - INFO - Received Slack command request
+2025-03-27 00:40:34,455 - app - DEBUG - Request headers: {'Host': '41e6-24-121-38-93.ngrok-free.app', 'User-Agent': 'Slackbot 1.0 (+https://api.slack.com/robots)', 'Content-Length': '411', 'Accept': 'application/json,*/*', 'Accept-Encoding': 'gzip,deflate', 'Content-Type': 'application/x-www-form-urlencoded', 'X-Forwarded-For': '3.239.20.166', 'X-Forwarded-Host': '41e6-24-121-38-93.ngrok-free.app', 'X-Forwarded-Proto': 'https', 'X-Slack-Request-Timestamp': '1743036034', 'X-Slack-Signature': 'v0=97a30bbf7a7aa9257aaacaaf9f319c3b3beedc70d0262ce98c69b1f95f60a358'}
+2025-03-27 00:40:34,456 - app - DEBUG - Raw request body: token=1w1FtPyZCgUJHWFW1eTNHYFu&team_id=T2NLV2E94&team_domain=alldigitalrewards&channel_id=C08K2DPSN07&channel_name=ai-bot&user_id=U0576UZDLSX&user_name=jfelke&command=%2Fask&text=hi&api_app_id=A08L4GHT0M6&is_enterprise_install=false&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FT2NLV2E94%2F8667080357028%2FBVyAjbXBbjlyPlhbeb3uQytV&trigger_id=8667080357044.90709082310.81ce31ab7eba2805f908fb42073d5444
+2025-03-27 00:40:34,456 - app - DEBUG - Verifying request signature:
+2025-03-27 00:40:34,457 - app - DEBUG - Timestamp: 1743036034
+2025-03-27 00:40:34,457 - app - DEBUG - Signature: v0=97a30bbf7a7aa9257aaacaaf9f319c3b3beedc70d0262ce98c69b1f95f60a358
+2025-03-27 00:40:34,458 - app - DEBUG - Signing secret: 628e...8c85
+2025-03-27 00:40:34,459 - app - DEBUG - Base string: v0:1743036034:token=1w1FtPyZCgUJHWFW1eTNHYFu&team_id=T2NLV2E94&team_domain=alldigitalrewards&channel_id=C08K2DPSN07&channel_name=ai-bot&user_id=U0576UZDLSX&user_name=jfelke&command=%2Fask&text=hi&api_app_id=A08L4GHT0M6&is_enterprise_install=false&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FT2NLV2E94%2F8667080357028%2FBVyAjbXBbjlyPlhbeb3uQytV&trigger_id=8667080357044.90709082310.81ce31ab7eba2805f908fb42073d5444
+2025-03-27 00:40:34,459 - app - DEBUG - Expected signature: v0=97a30bbf7a7aa9257aaacaaf9f319c3b3beedc70d0262ce98c69b1f95f60a358
+2025-03-27 00:40:34,459 - app - DEBUG - Received signature: v0=97a30bbf7a7aa9257aaacaaf9f319c3b3beedc70d0262ce98c69b1f95f60a358
+2025-03-27 00:40:34,462 - app - DEBUG - Form data: {'token': '1w1FtPyZCgUJHWFW1eTNHYFu', 'team_id': 'T2NLV2E94', 'team_domain': 'alldigitalrewards', 'channel_id': 'C08K2DPSN07', 'channel_name': 'ai-bot', 'user_id': 'U0576UZDLSX', 'user_name': 'jfelke', 'command': '/ask', 'text': 'hi', 'api_app_id': 'A08L4GHT0M6', 'is_enterprise_install': 'false', 'response_url': 'https://hooks.slack.com/commands/T2NLV2E94/8667080357028/BVyAjbXBbjlyPlhbeb3uQytV', 'trigger_id': '8667080357044.90709082310.81ce31ab7eba2805f908fb42073d5444'}
+2025-03-27 00:40:34,462 - app - INFO - Processing command: /ask with text: hi
+2025-03-27 00:40:34,463 - app - INFO - Processing /ask command asynchronously
+2025-03-27 00:40:34,464 - app - INFO - Request processing time: 0.01 seconds
+2025-03-27 00:40:34,464 - app - DEBUG - Text: hi, Channel ID: C08K2DPSN07
+2025-03-27 00:40:34,465 - app - DEBUG - Selected model: gemini-1.5-pro
+2025-03-27 00:40:34,465 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 00:40:34] "POST /slack/command HTTP/1.1" 200 -
+2025-03-27 00:40:34,466 - app - DEBUG - Question: hi
+2025-03-27 00:40:34,467 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:40:34,476 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:40:34,828 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667080357028/BVyAjbXBbjlyPlhbeb3uQytV HTTP/1.1" 200 2
+2025-03-27 00:40:34,829 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:40:34,830 - app - INFO - Generating streaming response using Gemini
+2025-03-27 00:40:34,830 - app - INFO - Generating response with model: gemini-1.5-pro
+2025-03-27 00:40:34,831 - app - DEBUG - Prompt: hi
+2025-03-27 00:40:34,831 - app - DEBUG - Context length: 0
+2025-03-27 00:40:36,850 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:40:36,853 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:40:37,157 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667080357028/BVyAjbXBbjlyPlhbeb3uQytV HTTP/1.1" 200 2
+2025-03-27 00:40:37,159 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:40:39,323 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:40:39,326 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:40:39,625 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667080357028/BVyAjbXBbjlyPlhbeb3uQytV HTTP/1.1" 200 2
+2025-03-27 00:40:39,626 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:40:41,869 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:40:41,871 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:40:42,219 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667080357028/BVyAjbXBbjlyPlhbeb3uQytV HTTP/1.1" 200 2
+2025-03-27 00:40:42,220 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:40:44,798 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:40:44,800 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:40:45,236 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667080357028/BVyAjbXBbjlyPlhbeb3uQytV HTTP/1.1" 200 2
+2025-03-27 00:40:45,236 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:40:45,239 - app - INFO - Response generated in 10.41 seconds
+2025-03-27 00:40:45,239 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:40:45,241 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:40:45,476 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8667080357028/BVyAjbXBbjlyPlhbeb3uQytV HTTP/1.1" 404 8
+2025-03-27 00:40:45,478 - app - ERROR - Error sending delayed response: 404 Client Error: Not Found for url: https://hooks.slack.com/commands/T2NLV2E94/8667080357028/BVyAjbXBbjlyPlhbeb3uQytV
+2025-03-27 00:40:45,479 - app - DEBUG - Response generation time: 10.65 seconds
+2025-03-27 00:43:43,521 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3001
+ * Running on http://172.21.0.2:3001
+2025-03-27 00:43:43,522 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-27 00:44:25,252 - app - INFO - Received Slack command request
+2025-03-27 00:44:25,253 - app - DEBUG - Request headers: {'Host': '9220-24-121-38-93.ngrok-free.app', 'User-Agent': 'Slackbot 1.0 (+https://api.slack.com/robots)', 'Content-Length': '411', 'Accept': 'application/json,*/*', 'Accept-Encoding': 'gzip,deflate', 'Content-Type': 'application/x-www-form-urlencoded', 'X-Forwarded-For': '34.239.161.198', 'X-Forwarded-Host': '9220-24-121-38-93.ngrok-free.app', 'X-Forwarded-Proto': 'https', 'X-Slack-Request-Timestamp': '1743036265', 'X-Slack-Signature': 'v0=4971a75c35da32508b89d7edeceb1ebd81518ce8175ba470af9f7dc720d3dc3d'}
+2025-03-27 00:44:25,254 - app - DEBUG - Raw request body: token=1w1FtPyZCgUJHWFW1eTNHYFu&team_id=T2NLV2E94&team_domain=alldigitalrewards&channel_id=C08K2DPSN07&channel_name=ai-bot&user_id=U0576UZDLSX&user_name=jfelke&command=%2Fask&text=hi&api_app_id=A08L4GHT0M6&is_enterprise_install=false&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FT2NLV2E94%2F8649433194263%2FYaE24BXPvG8WJnuHGMeuIYr5&trigger_id=8649433200135.90709082310.d9fcce2c27b44e5764b1479ae7420636
+2025-03-27 00:44:25,255 - app - DEBUG - Verifying request signature:
+2025-03-27 00:44:25,255 - app - DEBUG - Timestamp: 1743036265
+2025-03-27 00:44:25,255 - app - DEBUG - Signature: v0=4971a75c35da32508b89d7edeceb1ebd81518ce8175ba470af9f7dc720d3dc3d
+2025-03-27 00:44:25,256 - app - DEBUG - Signing secret: 628e...8c85
+2025-03-27 00:44:25,257 - app - DEBUG - Base string: v0:1743036265:token=1w1FtPyZCgUJHWFW1eTNHYFu&team_id=T2NLV2E94&team_domain=alldigitalrewards&channel_id=C08K2DPSN07&channel_name=ai-bot&user_id=U0576UZDLSX&user_name=jfelke&command=%2Fask&text=hi&api_app_id=A08L4GHT0M6&is_enterprise_install=false&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FT2NLV2E94%2F8649433194263%2FYaE24BXPvG8WJnuHGMeuIYr5&trigger_id=8649433200135.90709082310.d9fcce2c27b44e5764b1479ae7420636
+2025-03-27 00:44:25,257 - app - DEBUG - Expected signature: v0=4971a75c35da32508b89d7edeceb1ebd81518ce8175ba470af9f7dc720d3dc3d
+2025-03-27 00:44:25,257 - app - DEBUG - Received signature: v0=4971a75c35da32508b89d7edeceb1ebd81518ce8175ba470af9f7dc720d3dc3d
+2025-03-27 00:44:25,259 - app - DEBUG - Form data: {'token': '1w1FtPyZCgUJHWFW1eTNHYFu', 'team_id': 'T2NLV2E94', 'team_domain': 'alldigitalrewards', 'channel_id': 'C08K2DPSN07', 'channel_name': 'ai-bot', 'user_id': 'U0576UZDLSX', 'user_name': 'jfelke', 'command': '/ask', 'text': 'hi', 'api_app_id': 'A08L4GHT0M6', 'is_enterprise_install': 'false', 'response_url': 'https://hooks.slack.com/commands/T2NLV2E94/8649433194263/YaE24BXPvG8WJnuHGMeuIYr5', 'trigger_id': '8649433200135.90709082310.d9fcce2c27b44e5764b1479ae7420636'}
+2025-03-27 00:44:25,259 - app - INFO - Processing command: /ask with text: hi
+2025-03-27 00:44:25,260 - app - INFO - Processing /ask command asynchronously
+2025-03-27 00:44:25,261 - app - DEBUG - Text: hi, Channel ID: C08K2DPSN07
+2025-03-27 00:44:25,261 - app - INFO - Request processing time: 0.01 seconds
+2025-03-27 00:44:25,261 - app - DEBUG - Selected model: gemini-1.5-pro
+2025-03-27 00:44:25,264 - app - DEBUG - Question: hi
+2025-03-27 00:44:25,263 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 00:44:25] "POST /slack/command HTTP/1.1" 200 -
+2025-03-27 00:44:25,264 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:44:25,274 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:44:25,669 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8649433194263/YaE24BXPvG8WJnuHGMeuIYr5 HTTP/1.1" 200 2
+2025-03-27 00:44:25,671 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:44:25,671 - app - INFO - Generating streaming response using Gemini
+2025-03-27 00:44:25,672 - app - INFO - Generating response with model: gemini-1.5-pro
+2025-03-27 00:44:25,674 - app - DEBUG - Prompt: hi
+2025-03-27 00:44:25,675 - app - DEBUG - Context length: 0
+2025-03-27 00:44:28,900 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:44:28,903 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:44:29,223 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8649433194263/YaE24BXPvG8WJnuHGMeuIYr5 HTTP/1.1" 200 2
+2025-03-27 00:44:29,224 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:44:32,069 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:44:32,072 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:44:32,381 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8649433194263/YaE24BXPvG8WJnuHGMeuIYr5 HTTP/1.1" 200 2
+2025-03-27 00:44:32,382 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:44:33,641 - app - INFO - Response generated in 7.97 seconds
+2025-03-27 00:44:33,642 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:44:33,645 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:44:33,981 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8649433194263/YaE24BXPvG8WJnuHGMeuIYr5 HTTP/1.1" 200 2
+2025-03-27 00:44:33,982 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:44:33,982 - app - DEBUG - Response generation time: 8.31 seconds
+2025-03-27 00:47:45,463 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3001
+ * Running on http://172.21.0.2:3001
+2025-03-27 00:47:45,463 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-27 00:48:49,798 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3001
+ * Running on http://172.21.0.2:3001
+2025-03-27 00:48:49,798 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-27 00:49:20,824 - app - INFO - Received Slack command request
+2025-03-27 00:49:20,825 - app - DEBUG - Request headers: {'Host': 'e2f0-24-121-38-93.ngrok-free.app', 'User-Agent': 'Slackbot 1.0 (+https://api.slack.com/robots)', 'Content-Length': '411', 'Accept': 'application/json,*/*', 'Accept-Encoding': 'gzip,deflate', 'Content-Type': 'application/x-www-form-urlencoded', 'X-Forwarded-For': '44.202.197.195', 'X-Forwarded-Host': 'e2f0-24-121-38-93.ngrok-free.app', 'X-Forwarded-Proto': 'https', 'X-Slack-Request-Timestamp': '1743036560', 'X-Slack-Signature': 'v0=87a999133b55b47f26c66a236722852f9410b093443351d488a16929b60835a4'}
+2025-03-27 00:49:20,826 - app - DEBUG - Raw request body: token=1w1FtPyZCgUJHWFW1eTNHYFu&team_id=T2NLV2E94&team_domain=alldigitalrewards&channel_id=C08K2DPSN07&channel_name=ai-bot&user_id=U0576UZDLSX&user_name=jfelke&command=%2Fask&text=hi&api_app_id=A08L4GHT0M6&is_enterprise_install=false&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FT2NLV2E94%2F8649448451463%2FoHkr4oBCMefPPu83UDFpXNkV&trigger_id=8649448458759.90709082310.1233ea8f578af29f00f4f1879cfa487f
+2025-03-27 00:49:20,827 - app - DEBUG - Verifying request signature:
+2025-03-27 00:49:20,827 - app - DEBUG - Timestamp: 1743036560
+2025-03-27 00:49:20,828 - app - DEBUG - Signature: v0=87a999133b55b47f26c66a236722852f9410b093443351d488a16929b60835a4
+2025-03-27 00:49:20,829 - app - DEBUG - Signing secret: 628e...8c85
+2025-03-27 00:49:20,830 - app - DEBUG - Base string: v0:1743036560:token=1w1FtPyZCgUJHWFW1eTNHYFu&team_id=T2NLV2E94&team_domain=alldigitalrewards&channel_id=C08K2DPSN07&channel_name=ai-bot&user_id=U0576UZDLSX&user_name=jfelke&command=%2Fask&text=hi&api_app_id=A08L4GHT0M6&is_enterprise_install=false&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FT2NLV2E94%2F8649448451463%2FoHkr4oBCMefPPu83UDFpXNkV&trigger_id=8649448458759.90709082310.1233ea8f578af29f00f4f1879cfa487f
+2025-03-27 00:49:20,831 - app - DEBUG - Expected signature: v0=87a999133b55b47f26c66a236722852f9410b093443351d488a16929b60835a4
+2025-03-27 00:49:20,832 - app - DEBUG - Received signature: v0=87a999133b55b47f26c66a236722852f9410b093443351d488a16929b60835a4
+2025-03-27 00:49:20,834 - app - DEBUG - Form data: {'token': '1w1FtPyZCgUJHWFW1eTNHYFu', 'team_id': 'T2NLV2E94', 'team_domain': 'alldigitalrewards', 'channel_id': 'C08K2DPSN07', 'channel_name': 'ai-bot', 'user_id': 'U0576UZDLSX', 'user_name': 'jfelke', 'command': '/ask', 'text': 'hi', 'api_app_id': 'A08L4GHT0M6', 'is_enterprise_install': 'false', 'response_url': 'https://hooks.slack.com/commands/T2NLV2E94/8649448451463/oHkr4oBCMefPPu83UDFpXNkV', 'trigger_id': '8649448458759.90709082310.1233ea8f578af29f00f4f1879cfa487f'}
+2025-03-27 00:49:20,834 - app - INFO - Processing command: /ask with text: hi
+2025-03-27 00:49:20,835 - app - INFO - Processing /ask command asynchronously
+2025-03-27 00:49:20,835 - app - INFO - Request processing time: 0.01 seconds
+2025-03-27 00:49:20,835 - app - DEBUG - Text: hi, Channel ID: C08K2DPSN07
+2025-03-27 00:49:20,836 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 00:49:20] "POST /slack/command HTTP/1.1" 200 -
+2025-03-27 00:49:20,836 - app - DEBUG - Selected model: gemini-1.5-pro
+2025-03-27 00:49:20,837 - app - DEBUG - Question: hi
+2025-03-27 00:49:20,837 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:49:20,843 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:49:21,196 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8649448451463/oHkr4oBCMefPPu83UDFpXNkV HTTP/1.1" 200 2
+2025-03-27 00:49:21,197 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:49:21,198 - app - INFO - Generating streaming response using Gemini
+2025-03-27 00:49:21,198 - app - INFO - Generating response with model: gemini-1.5-pro
+2025-03-27 00:49:21,199 - app - DEBUG - Prompt: hi
+2025-03-27 00:49:21,199 - app - DEBUG - Context length: 0
+2025-03-27 00:49:26,489 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:49:26,491 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:49:26,801 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8649448451463/oHkr4oBCMefPPu83UDFpXNkV HTTP/1.1" 200 2
+2025-03-27 00:49:26,802 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:49:30,442 - app - INFO - Response generated in 9.24 seconds
+2025-03-27 00:49:30,444 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:49:30,447 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:49:30,778 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8649448451463/oHkr4oBCMefPPu83UDFpXNkV HTTP/1.1" 200 2
+2025-03-27 00:49:30,780 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:49:30,781 - app - DEBUG - Response generation time: 9.58 seconds
+2025-03-27 00:50:46,384 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3001
+ * Running on http://172.21.0.2:3001
+2025-03-27 00:50:46,385 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-27 00:51:16,782 - app - INFO - Received Slack command request
+2025-03-27 00:51:16,783 - app - DEBUG - Request headers: {'Host': 'ff01-24-121-38-93.ngrok-free.app', 'User-Agent': 'Slackbot 1.0 (+https://api.slack.com/robots)', 'Content-Length': '411', 'Accept': 'application/json,*/*', 'Accept-Encoding': 'gzip,deflate', 'Content-Type': 'application/x-www-form-urlencoded', 'X-Forwarded-For': '54.82.204.214', 'X-Forwarded-Host': 'ff01-24-121-38-93.ngrok-free.app', 'X-Forwarded-Proto': 'https', 'X-Slack-Request-Timestamp': '1743036676', 'X-Slack-Signature': 'v0=7b25f9e87359ceb5a320543196c9d0be97514c34dbc2c46ce38a5120e2f0680d'}
+2025-03-27 00:51:16,784 - app - DEBUG - Raw request body: token=1w1FtPyZCgUJHWFW1eTNHYFu&team_id=T2NLV2E94&team_domain=alldigitalrewards&channel_id=C08K2DPSN07&channel_name=ai-bot&user_id=U0576UZDLSX&user_name=jfelke&command=%2Fask&text=hi&api_app_id=A08L4GHT0M6&is_enterprise_install=false&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FT2NLV2E94%2F8666412375378%2FcTjPpbqVw33oKM0o9CK5muCz&trigger_id=8666412381698.90709082310.aca7ed18ff81b281119e87d16d3dc2ac
+2025-03-27 00:51:16,785 - app - DEBUG - Verifying request signature:
+2025-03-27 00:51:16,785 - app - DEBUG - Timestamp: 1743036676
+2025-03-27 00:51:16,785 - app - DEBUG - Signature: v0=7b25f9e87359ceb5a320543196c9d0be97514c34dbc2c46ce38a5120e2f0680d
+2025-03-27 00:51:16,786 - app - DEBUG - Signing secret: 628e...8c85
+2025-03-27 00:51:16,786 - app - DEBUG - Base string: v0:1743036676:token=1w1FtPyZCgUJHWFW1eTNHYFu&team_id=T2NLV2E94&team_domain=alldigitalrewards&channel_id=C08K2DPSN07&channel_name=ai-bot&user_id=U0576UZDLSX&user_name=jfelke&command=%2Fask&text=hi&api_app_id=A08L4GHT0M6&is_enterprise_install=false&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FT2NLV2E94%2F8666412375378%2FcTjPpbqVw33oKM0o9CK5muCz&trigger_id=8666412381698.90709082310.aca7ed18ff81b281119e87d16d3dc2ac
+2025-03-27 00:51:16,787 - app - DEBUG - Expected signature: v0=7b25f9e87359ceb5a320543196c9d0be97514c34dbc2c46ce38a5120e2f0680d
+2025-03-27 00:51:16,787 - app - DEBUG - Received signature: v0=7b25f9e87359ceb5a320543196c9d0be97514c34dbc2c46ce38a5120e2f0680d
+2025-03-27 00:51:16,788 - app - DEBUG - Form data: {'token': '1w1FtPyZCgUJHWFW1eTNHYFu', 'team_id': 'T2NLV2E94', 'team_domain': 'alldigitalrewards', 'channel_id': 'C08K2DPSN07', 'channel_name': 'ai-bot', 'user_id': 'U0576UZDLSX', 'user_name': 'jfelke', 'command': '/ask', 'text': 'hi', 'api_app_id': 'A08L4GHT0M6', 'is_enterprise_install': 'false', 'response_url': 'https://hooks.slack.com/commands/T2NLV2E94/8666412375378/cTjPpbqVw33oKM0o9CK5muCz', 'trigger_id': '8666412381698.90709082310.aca7ed18ff81b281119e87d16d3dc2ac'}
+2025-03-27 00:51:16,788 - app - INFO - Processing command: /ask with text: hi
+2025-03-27 00:51:16,789 - app - INFO - Processing /ask command asynchronously
+2025-03-27 00:51:16,789 - app - DEBUG - Text: hi, Channel ID: C08K2DPSN07
+2025-03-27 00:51:16,790 - app - DEBUG - Selected model: gemini-1.5-pro
+2025-03-27 00:51:16,790 - app - DEBUG - Question: hi
+2025-03-27 00:51:16,790 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:51:16,789 - app - INFO - Request processing time: 0.01 seconds
+2025-03-27 00:51:16,793 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 00:51:16] "POST /slack/command HTTP/1.1" 200 -
+2025-03-27 00:51:16,796 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:51:17,158 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8666412375378/cTjPpbqVw33oKM0o9CK5muCz HTTP/1.1" 200 2
+2025-03-27 00:51:17,159 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:51:17,160 - app - INFO - Generating response using Gemini
+2025-03-27 00:51:17,160 - app - INFO - Generating response with model: gemini-1.5-pro
+2025-03-27 00:51:17,161 - app - DEBUG - Prompt: hi
+2025-03-27 00:51:17,161 - app - DEBUG - Context length: 0
+2025-03-27 00:51:26,185 - app - INFO - Response generated in 9.02 seconds
+2025-03-27 00:51:26,185 - app - INFO - Sending delayed response to Slack
+2025-03-27 00:51:26,188 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): hooks.slack.com:443
+2025-03-27 00:51:26,496 - urllib3.connectionpool - DEBUG - https://hooks.slack.com:443 "POST /commands/T2NLV2E94/8666412375378/cTjPpbqVw33oKM0o9CK5muCz HTTP/1.1" 200 2
+2025-03-27 00:51:26,498 - app - DEBUG - Successfully sent delayed response
+2025-03-27 00:51:26,498 - app - DEBUG - Response generation time: 9.34 seconds
